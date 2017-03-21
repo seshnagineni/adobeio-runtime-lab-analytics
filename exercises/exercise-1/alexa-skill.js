@@ -69,6 +69,7 @@ var main = function (event) {
                     });
                 alexaSDK.APP_ID = APP_ID;
                 alexaSDK.resources = languageStrings;
+                alexaSDK.registerHandlers(newSessionHandlers);
 
                 return alexaSDK.execute();
             } catch (err) {
@@ -76,4 +77,16 @@ var main = function (event) {
                 reject(err.toString());
             }
         });
+    
+    
+};
+
+// Create default handlers
+var newSessionHandlers = {
+    'LaunchRequest': function () {
+        //Skill was launched
+
+        //Say Hello!
+        this.emit(':tell', "Hello NAME");
+    }
 };
